@@ -1,0 +1,55 @@
+ .App {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #000000;
+  }
+
+  body {
+    font-size: 1.2rem;
+    font-family: Arial, sans-serif;
+    background: #fff;
+  }
+  
+  /* .result {
+    margin-top: 20px;
+  } */
+  
+  .options {
+    cursor: pointer;
+    border: 3px solid #f6f6f6;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 2% 25%;
+    background-color: #f6f6f6;
+  }
+  
+  .selected {
+    /* background:  #74ebd5 !important; */
+    /* background: #d5edda; */
+    /* background: #e6b8b7; */
+    background: #a1d3ac;
+
+  }
+  
+  /* ul {
+    list-style-type: none;
+  } */
+
+  .container{
+    border: 5px solid #f6f6f6;
+    margin: 10% 10%;
+  }
+  .button{
+    cursor: pointer;
+    border: 2px solid #f6f6f6;
+    border-radius: 9px;
+    padding: 15px 32px;
+  }
+  .button:hover{
+    background-color: #8dc89a;
+    border: 3px solid #f6f6f6;
+    color:#ffff;
+    border-radius: 3px;
+  }
+
+  
