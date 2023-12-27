@@ -1,101 +1,86 @@
 import React, { useState, useEffect } from "react";
 import { quizData } from "../components/quizData";
 
-const MainQuiz = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [myAnswer, setMyAnswer] = useState(null);
-  const [options, setOptions] = useState([]);
+function MainQuiz() {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [disabled, setDisabled] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
-  const [questions, setQuestions] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const loadQuizData = () => {
-    setQuestions(quizData[currentQuestion].question);
-    setAnswer(quizData[currentQuestion].answer);
-    setOptions(quizData[currentQuestion].options);
-  };
-
-  useEffect(() => {
-    loadQuizData();
-  }, [currentQuestion]);
-
-  const nextQuestionHandler = () => {
-    if (myAnswer === answer) {
-      setScore(score + 1);
-    }
-    setCurrentQuestion(currentQuestion + 1);
-  };
-
-  useEffect(() => {
-    setDisabled(true);
-    setQuestions(quizData[currentQuestion].question);
-    setOptions(quizData[currentQuestion].options);
-    setAnswer(quizData[currentQuestion].answer);
-  }, [currentQuestion]);
-
-  const checkAnswer = (selectedAnswer) => {
-    setMyAnswer(selectedAnswer);
-    setDisabled(false);
-  };
-
-  const finishHandler = () => {
-    if (currentQuestion === quizData.length - 1) {
-      setIsEnd(true);
-    }
-    if (myAnswer === answer) {
-      setScore(score + 1);
+  const handleOptionClick = (option) => {
+    if (selectedOption === null) {
+      setSelectedOption(option);
     }
   };
 
-  if (isEnd) {
+  const showScore = () => {
     return (
       <div>
-        <div className="result">
-          <h3>Game Over your Final score is {score} points </h3>
-          <div>
-            The correct answer's for the questions was
-            <ul>
-              {quizData.map((item, index) => (
-                <li className="ui floating message options" key={index}>
-                  {item.answer}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <p>Your final score is {score} out of {quizData.length}!</p>
+        <button onClick={startQuiz}>Play Again</button>
       </div>
     );
-  } else {
+  };
+
+  const handleNextButton = () => {
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    setSelectedOption(null); // Reset selected option for the next question
+  };
+
+  const startQuiz = () => {
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setSelectedOption(null);
+  };
+
+  const showQuestion = () => {
+    const currentQuestion = quizData[currentQuestionIndex];
+    const isCorrect = selectedOption === currentQuestion.answers.find(answer => answer.correct);
+
     return (
-      <div className="container">
-        <div className="App">
-          <h1>{questions} </h1>
-          <span>{`Questions ${currentQuestion}  out of ${quizData.length - 1} remaining `}</span>
-          {options.map((option) => (
-            <p
-              key={option.id}
-              className={`ui floating message options ${myAnswer === option ? "selected" : null}`}
-              onClick={() => checkAnswer(option)}
-            >
-              {option}
-            </p>
+      <div>
+        <h2>{currentQuestion.question}</h2>
+        <ul>
+          {currentQuestion.answers.map((answer, index) => (
+            <div key={index}>
+              <h2
+                onClick={() => handleOptionClick(answer)}
+                className={
+                  selectedOption && answer.correct
+                    ? 'correct'
+                    : selectedOption === answer
+                    ? 'incorrect'
+                    : ''
+                }
+              >
+                {answer.text}
+              </h2>
+            </div>
           ))}
-          {currentQuestion < quizData.length - 1 && (
-            <button className="button" disabled={disabled} onClick={nextQuestionHandler}>
-              Next
+        </ul>
+        {selectedOption && (
+          <div>
+            <p>
+              {isCorrect
+                ? 'Correct!'
+                : 'Wrong! The correct answer is ' +
+                  currentQuestion.answers.find((answer) => answer.correct).text}
+            </p>
+            <button onClick={handleNextButton} disabled={currentQuestionIndex === quizData.length - 1}>
+              Next Question
             </button>
-          )}
-          {currentQuestion === quizData.length - 1 && (
-            <button className="button" onClick={finishHandler}>
-              Finish
-            </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
-  }
-};
+  };
+
+  // Initial render
+  return (
+    <div className='App'>
+      {currentQuestionIndex < quizData.length ? showQuestion() : showScore()}
+    </div>
+  );
+}
+
 
 export default MainQuiz;

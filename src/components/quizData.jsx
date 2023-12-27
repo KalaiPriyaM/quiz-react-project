@@ -1,72 +1,94 @@
 export const quizData = [
     {
-      id: 0,
       question: ` What is the result of the following expression: typeof([])? `,
-      options: [`object`, `array`, `undefined`,`string`],
-      answer: `object`
+      answers: [
+        { text: `object`, correct: true },
+        { text: `array`, correct: false },
+        { text: `undefined`, correct: false },
+        { text: `string`, correct: false },
+      ],
     },
     {
-      id: 1,
       question: `Which of the following is used to iterate over the properties of an object?`,
-      options: [`or of`, `foreach`, `for in`,`iterate`],
-      answer: `for in`
+      answers: [
+        { text: `or of`, correct: false },
+        { text: `foreach`, correct: false },
+        { text: `for in`, correct: true },
+        { text: `iterate`, correct: false },
+      ],
     },
     {
-      id: 2,
       question: `What is the purpose of the JSON.stringify() method in JavaScript?`,
-      options: [`Parses a JSON string to a JavaScript object`,
-       `Removes an element from an array`, 
-       ` Sorts the elements of an array`,
-       `Converts a JavaScript object to a JSON string`],
-      answer: `Converts a JavaScript object to a JSON string`
+      answers: [
+        { text: `Parses a JSON string to a JavaScript object`, correct: false,},
+        { text: `Removes an element from an array`, correct: false, },
+        { text: `Sorts the elements of an array`, correct: false, },
+        { text: `Converts a JavaScript object to a JSON string`, correct: true, },
+      ],
     },
     {
-      id: 3,
-      question: `What does the === operator do in JavaScript?`,
-      options: [` Assigns a value to a variable`, 
-      `Compares values for equality with type coercion`, 
-      ` Compares values for equality without type coercion`,
-      `Checks if a variable is declared`],
-      answer: ` Compares values for equality without type coercion`
+      question: "What does the === operator do in JavaScript?",
+      answers: [
+        { text: "Assigns a value to a variable", correct: false },
+        { text: "Compares values for equality with type coercion", correct: false },
+        { text: "Compares values for equality without type coercion", correct: true },
+        { text: "Checks if a variable is declared", correct: false },
+      ],
     },
     {
-      id: 4,
-      question: `Which method is used to add a new element to the end of an array?`,
-      options: [` append()`, `addToEnd()`, `concat()`,`push()`],
-      answer: `push()`
+      question: "Which method is used to add a new element to the end of an array?",
+      answers: [
+        { text: "append()", correct: false },
+        { text: "addToEnd()", correct: false },
+        { text: "concat()", correct: false },
+        { text: "push()", correct: true },
+      ],
     },
     {
-      id: 5,
-      question: `Which event is triggered when a user clicks on an HTML element?`,
-      options: [` onhover `, `onclick`, `onchange`,`onsubmit`],
-      answer: `onclick`
+      question: "Which event is triggered when a user clicks on an HTML element?",
+      answers: [
+        { text: "onhover", correct: false },
+        { text: "onclick", correct: true },
+        { text: "onchange", correct: false },
+        { text: "onsubmit", correct: false },
+      ],
+    },  
+    {
+      question: "What is the purpose of the try...catch statement in JavaScript?",
+      answers: [
+        { text: "Creates a conditional statement", correct: false },
+        { text: "Declares a new variable", correct: false },
+        { text: "Defines a loop", correct: false },
+        { text: "Handles exceptions and errors", correct: true },
+      ],
     },
     {
-      id: 6,
-      question: `What is the purpose of the try...catch statement in JavaScript?`,
-      options: [` Creates a conditional statement`, `Declares a new variable`, `Defines a loop`,`Handles exceptions and errors`],
-      answer: `Handles exceptions and errors`
+      question: "How can you prevent the default behavior of an HTML form submission in JavaScript?",
+      answers: [
+        { text: "event.stopImmediatePropagation()", correct: false },
+        { text: "event.preventDefault()", correct: true },
+        { text: "event.stopPropagation()", correct: false },
+        { text: "event.defaultPrevented()", correct: false },
+      ],
     },
     {
-      id: 7,
-      question: `How can you prevent the default behavior of an HTML form submission in JavaScript?`,
-      options: [` event.stopImmediatePropagation()`, `event.preventDefault()`, `event.stopPropagation()`,`event.defaultPrevented()`],
-      answer: `event.preventDefault()`
+      question: "What is the purpose of the querySelector method in JavaScript?",
+      answers: [
+        { text: "Retrieves the first element that matches a specified CSS selector", correct: true },
+        { text: "Selects all elements that match a specified CSS selector", correct: false },
+        { text: "Creates a new HTML element", correct: false },
+        { text: "Modifies the style of an HTML element", correct: false },
+      ],
     },
     {
-      id: 8,
-      question: `What is the purpose of the querySelector method in JavaScript?`,
-      options: [` Retrieves the first element that matches a specified CSS selector `,
-       `Selects all elements that match a specified CSS selector`,
-       `Creates a new HTML element`,
-      `Modifies the style of an HTML element`],
-      answer: ` Retrieves the first element that matches a specified CSS selector`
+      question: "Which keyword is used to declare a constant in JavaScript?",
+      answers: [
+        { text: "var", correct: false },
+        { text: "let", correct: false },
+        { text: "const", correct: true },
+        { text: "static", correct: false },
+      ],
     },
-    {
-      id: 9,
-      question: `Which keyword is used to declare a constant in JavaScript?`,
-      options: [` var`, `let`, `const`,`static`],
-      answer: `const`
-    },   
-  ];
+  
+  ]; 
   
