@@ -28,7 +28,6 @@
     /* background: #d5edda; */
     /* background: #e6b8b7; */
     background: #a1d3ac;
-
   }
   
   /* ul {
@@ -50,6 +49,14 @@
     border: 3px solid #f6f6f6;
     color:#ffff;
     border-radius: 3px;
+  }
+
+  .correct{
+    background-color: green;
+  }
+  
+  .incorrect{
+    background-color: red;
   }
 
   

@@ -67,6 +67,6 @@ export const quizData = [
       question: `Which keyword is used to declare a constant in JavaScript?`,
       options: [` var`, `let`, `const`,`static`],
       answer: `const`
-    },
+    },   
   ];
   
